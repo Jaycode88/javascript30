@@ -20,27 +20,80 @@
 
     // Regular
 
+    console.log('hello');
+
     // Interpolated
+
+    console.log('hello I am a %s string!', 'poop');// will put the second value in the place marked %s
+// can also be done like soo....
+    let poop = 'poop';
+    console.log(`hello I am a ${poop} string!`) ;
 
     // Styled
 
-    // warning!
+    console.log('%c I am some great text', 'font-size:50px; background:red;');
+// the above shows use of %c which is put infront of the item you want to style then the second
+//argument passed to the console shows the styling rules
+   
+// warning!
+
+console.warn('OH NOOO'); // will log the warning message and give name of item warning belongs to
 
     // Error :|
 
+    console.error('There is an error');// will log error message and where its from
+
     // Info
+
+console.info('Crocodiles eat 3-4 people per year');
 
     // Testing
 
+const p = document.querySelector('p');
+console.assert(p.classList.contains('ouch'), 'That is wrong');
+// the above checks if the paragraph has a class of 'ouch' if it does not it returns the
+//second argument in an error if it is true nothing will happen
+
     // clearing
+
+console.clear(); // note this out to view previous console.logs
 
     // Viewing DOM Elements
 
+    console.log(p); // will show the element to the console
+    console.dir(p); // will log all different properties of the element to the console.
+
     // Grouping together
+
+dogs.forEach(dog => {
+    console.group(`${dog.name}`); // you can use groupCollapsed instead of group this will put info in dropdown for group
+    console.log(`This is ${dog.name}`);
+    console.log(`${dog.name} is ${dog.age} years old.`);
+    console.log(`${dog.name} is ${dog.age * 7} dog years old.`);
+    console.groupEnd(`${dog.name}`);
+})
 
     // counting
 
+    console.count('wes')
+    console.count('wes')
+    console.count('bob')
+    console.count('bob')
+    console.count('john')
+
     // timing
+
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+    .then(data => data.json())
+    .then(data =>{
+        console.timeEnd('fetching data')
+        console.log(data)
+    })
+
+// table
+
+console.table(dogs) // this displays before timing in console not sure why
 
   </script>
 </body>
