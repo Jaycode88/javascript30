@@ -9,13 +9,30 @@
 
   <script>
     // start with strings, numbers and booleans
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2)
+    age = 200
+    console.log(age, age2)
+
+    let name = 'wes';
+    let name2 = name;
+    console.log(name, name2)
+    name = 'Wesley';
+    console.log(name, name2)
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
+
     // and we want to make a copy of it.
+    const team = players;
+    console.log(players, team)
 
     // You might think we can just do something like this:
+
+    team[3] = 'Lux';
+
 
     // however what happens when we update that array?
 
@@ -26,12 +43,16 @@
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
-
+    const team2 = players.slice(); //this will make a new array and copy the first array into it
+    
     // one way
 
     // or create a new array and concat the old one in
-
+const team3 = [].concat(players);
     // or use the new ES6 Spread
+const team4 = [...players];
+
+const team5 = Array.from(players);
 
     // now when we update it, the original one isn't changed
 
@@ -44,13 +65,31 @@
     };
 
     // and think we make a copy:
+  const captain = person; //this does not copy it refers to original
+  captain.number = 99;    // any changes would also be made to original array
 
     // how do we take a copy instead?
-
-    // We will hopefully soon see the object ...spread
-
+ const cap2 = Object.assign({}, person, {number: 99});// this creates new object assigns it the values of the person object then adds its own value
+    // new feature .... the object ...spread
+    const cap3 = {...person}; //This is exactly like the es6 array spread used above..
+console.log(cap3)
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+const wes = {
+    name: 'Wes',
+    age:100,
+    social: {
+        Twitter: '@wesbos',
+        Facebook: 'wesbos.developer'
+    }
+}
+console.log(wes)
 
+// to copy the object
+const dev = Object.assign({}, wes);// this creates new object in which changes can be made without changing the original object
+// Another way to do it but unsuggested reffered to as "the poor mans deep clone"
+const dev2 = JSON.parse(JSON.stringify(wes));
+// JSON stringify copys the original object into a string
+//parse then takes that string and turns it back into an object
   </script>
 
 </body>
